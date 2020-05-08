@@ -6,6 +6,12 @@ interface Balance {
   total: number;
 }
 
+interface CreateTransactionTDO {
+  title: string;
+  value: number;
+  type: 'income' | 'outcome';
+}
+
 class TransactionsRepository {
   private transactions: Transaction[];
 
@@ -17,12 +23,18 @@ class TransactionsRepository {
     return this.transactions;
   }
 
-  public getBalance(): Balance {
+  // public getBalance(): Balance {}
 
-  }
+  public create({ title, value, type }: CreateTransactionTDO ): Transaction {
+    const transaction = new Transaction({
+       title,
+      value,
+        type
+       });
 
-  public create({title,value,type}): Transaction {
-   const transactions = new Transaction({title,value,type});
+    this.transactions.push(transaction);
+
+    return transaction;
   }
 }
 

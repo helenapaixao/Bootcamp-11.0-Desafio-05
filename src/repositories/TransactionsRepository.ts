@@ -14,15 +14,15 @@ class TransactionsRepository {
   }
 
   public all(): Transaction[] {
-    // TODO
+    return this.transactions;
   }
 
   public getBalance(): Balance {
-    // TODO
+
   }
 
-  public create(): Transaction {
-    // TODO
+  public create({title,value,type}): Transaction {
+   const transactions = new Transaction({title,value,type});
   }
 }
 
